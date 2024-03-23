@@ -40,3 +40,33 @@
 .read-the-docs {
   color: #888;
 }
+
+/*! SideBar  */
+.sidebar {
+  position: fixed; /* Fix the sidebar position */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  width: 250px; /* Set the width of the sidebar */
+  height: 100%; /* Set the height to fill the entire viewport */
+  background-color: #f0f0f0; /* Background color */
+  padding: 20px; /* Add padding for content */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Add shadow for a 3D effect */
+}
+
+.sidebar h2 {
+  margin-top: 0; /* Remove default margin for heading */
+}
+
+.sidebar ul {
+  list-style-type: none; /* Remove default list styles */
+  padding: 0; /* Remove default padding */
+}
+
+.sidebar ul li {
+  margin-bottom: 10px; /* Add margin between menu items */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.sidebar ul li:hover {
+  color: #007bff; /* Change text color on hover */
+}
