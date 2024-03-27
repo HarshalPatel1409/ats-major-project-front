@@ -1,8 +1,8 @@
 // Board.js
 import React, { useState } from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-import Column from "../../Employer/Column";
-import initialData from "../../Employer/initialData"; // Initial data structure
+import Column from "./Column";
+import initialData from "./initialData";
 
 const Board = () => {
   const [data, setData] = useState(initialData);
