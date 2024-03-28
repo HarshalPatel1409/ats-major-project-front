@@ -1,10 +1,23 @@
 import axios from "axios";
 
-//! createJob
-export const createJob = async () => {
+//! createNote
+export const createNote = async () => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/job/createJob"
+      "http://localhost:5000/api/note/createNote"
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching Note:", error);
+    throw error;
+  }
+};
+
+//! getAllNotes
+export const getAllNotes = async () => {
+  try {
+    const response = await axios.post(
+      "http://localhost:5000/api/note/getNotes"
     );
     return response.data;
   } catch (error) {
@@ -13,22 +26,11 @@ export const createJob = async () => {
   }
 };
 
-//! getAllJobs
-export const getAllJobs = async () => {
-  try {
-    const response = await axios.post("http://localhost:5000/api/job/getJobs");
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching transactions:", error);
-    throw error;
-  }
-};
-
-//! getJob
-export const getJob = async (id, updatedData) => {
+//! getMyNotes
+export const getMyNotes = async () => {
   try {
     const response = await axios.post(
-      `http://localhost:5000/api/job/getJob/${id}`
+      "http://localhost:5000/api/note/getMyNotes"
     );
     return response.data;
   } catch (error) {
@@ -37,11 +39,11 @@ export const getJob = async (id, updatedData) => {
   }
 };
 
-//! updateJob
-export const updateJob = async (id, updatedData) => {
+//! updateNote
+export const updateNote = async (id, updatedData) => {
   try {
     const response = await axios.post(
-      `http://localhost:5000/api/job/updateJob/${id}`,
+      `http://localhost:5000/api/note/getNotes/${id}`,
       updatedData
     );
     return response.data;
@@ -51,11 +53,11 @@ export const updateJob = async (id, updatedData) => {
   }
 };
 
-//! deleteJob
-export const deleteJob = async (id) => {
+//! deleteNote
+export const deleteNote = async (id) => {
   try {
     const response = await axios.post(
-      `http://localhost:5000/api/job/deleteJob/${id}`
+      `http://localhost:5000/api/note/deleteNote/${id}`
     );
     return response.data;
   } catch (error) {

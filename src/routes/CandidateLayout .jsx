@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import SidebarCandidate from "./../components/Widgets/Sidebar/SidebarCandidate";
 import DashboardCandidate from "./../components/Candidate/Dashboard";
+import Notes from "./../components/Common/Notes";
 import ProfileCandidate from "./../components/Candidate/Profile";
 import SettingCandidate from "./../components/Candidate/Setting";
 
@@ -12,6 +13,7 @@ const CandidateLayout = () => {
       <div style={{ flex: 1 }}>
         <Routes>
           <Route index element={<DashboardCandidate />} />
+          <Route path="notes" element={<Notes />} />
           <Route path="profile" element={<ProfileCandidate />} />
           <Route path="setting" element={<SettingCandidate />} />
         </Routes>
