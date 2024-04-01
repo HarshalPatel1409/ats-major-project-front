@@ -1,5 +1,3 @@
-// Job.js
-
 import React, { useEffect, useState } from "react";
 import { getAllJobs } from "../../../services/Job/Job.service";
 import JobCard from "../../Widgets/Card/JobCard";
@@ -33,7 +31,7 @@ const Job = () => {
       <h1>Jobs</h1>
       {jobs ? (
         jobs.map((item, index) => (
-          <JobCard key={index} item={item} onClick={() => shoot(item.title)} />
+          <JobCard key={index} item={item} onClick={() => shoot(item)} />
         ))
       ) : (
         <div>Loading...</div>

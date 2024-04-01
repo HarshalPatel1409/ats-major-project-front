@@ -14,13 +14,17 @@ const Login = () => {
     event.preventDefault();
     try {
       const credentials = { email, password, authorize };
+      
       const response = await authenticate(credentials);
       const { message, data } = response;
 
       // Check if authentication was successful
       if (message === "Authentication successful" && data && data.length > 0) {
         const { _id, name, email } = data[0];
-        localStorage.setItem(authorize, JSON.stringify({ _id, name, email }));
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ _id, name, email, authorize })
+        );
 
         setErrorMessage(null);
         setEmail("");
