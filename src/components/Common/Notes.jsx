@@ -97,7 +97,7 @@ const Notes = () => {
       <Modal size="lg" show={modalShow} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>
-            {creatingNote ? "Create New Note" : "Edit Note"} {id}
+            {creatingNote ? "Create New Note" : "Edit Note"}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

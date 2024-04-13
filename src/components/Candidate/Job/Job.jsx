@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { getAllJobs } from "../../../services/Job/Job.service";
+import JobCard from "../../Widgets/Card/JobCard";
 import { useNavigate } from "react-router-dom";
-import JobCardEmployer from "../../Widgets/Card/JobCardEmployer";
 
 const Job = () => {
   let navigate = useNavigate();
   const [jobs, setJobs] = useState();
 
-  const newJob = () => {
-    let path = "create";
+  const shoot = async (job) => {
+    const path = `jobView/${job}`;
     navigate(path);
   };
+
 
   const getJobs = async () => {
     let response = await getAllJobs();
@@ -23,10 +24,11 @@ const Job = () => {
 
   return (
     <div>
-      <button onClick={newJob}>Create Job</button>
       <h1>Jobs</h1>
       {jobs ? (
-        jobs.map((item, index) => <JobCardEmployer key={index} item={item} />)
+        jobs.map((item, index) => (
+          <JobCard key={index} item={item} onClick={() => shoot(item._id)} />
+        ))
       ) : (
         <div>Loading...</div>
       )}

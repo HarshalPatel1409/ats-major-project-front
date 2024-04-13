@@ -24,11 +24,13 @@ export const getAllJobs = async () => {
   }
 };
 
-//! getJob
-export const getJob = async (id, updatedData) => {
+//! getJobById
+export const getJobById = async (id) => {
   try {
     const response = await axios.post(
-      `http://localhost:5000/api/job/getJob/${id}`
+      "http://localhost:5000/api/job/getJob",
+      { id },
+      { headers: { "Content-Type": "application/json" } }
     );
     return response.data;
   } catch (error) {
@@ -38,11 +40,12 @@ export const getJob = async (id, updatedData) => {
 };
 
 //! updateJob
-export const updateJob = async (id, updatedData) => {
+export const updateJob = async (updatedData) => {
   try {
     const response = await axios.post(
-      `http://localhost:5000/api/job/updateJob/${id}`,
-      updatedData
+      `http://localhost:5000/api/job/updateJob`,
+      updatedData,
+      { headers: { "Content-Type": "application/json" } }
     );
     return response.data;
   } catch (error) {

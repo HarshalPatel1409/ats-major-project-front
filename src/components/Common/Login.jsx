@@ -14,7 +14,7 @@ const Login = () => {
     event.preventDefault();
     try {
       const credentials = { email, password, authorize };
-      
+
       const response = await authenticate(credentials);
       const { message, data } = response;
 
@@ -48,7 +48,7 @@ const Login = () => {
 
   return (
     <div>
-      <h2>Login</h2>
+      <h2>Login {authorize}</h2>
       {errorMessage}
       {authorize !== null ? (
         <form onSubmit={handleSubmit}>
