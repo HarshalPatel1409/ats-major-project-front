@@ -1,10 +1,20 @@
+import { Stack } from "@mui/material";
 import React from "react";
 
 const ProfileEmployer = () => {
   return (
-    <div>
-      <h1>Profile</h1>
-    </div>
+    <>
+      <div className="page-header">
+        <Stack
+          direction="row"
+          alignItems="flex-start"
+          justifyContent="space-between"
+        >
+          <div className="top-heading">Profile</div>
+        </Stack>
+      </div>
+      <div className="page-body"></div>
+    </>
   );
 };
 

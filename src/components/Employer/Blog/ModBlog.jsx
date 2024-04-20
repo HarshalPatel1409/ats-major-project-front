@@ -1,6 +1,11 @@
 import { Stack } from "@mui/material";
-import React, { useEffect, useState } from "react";
-const DashboardEmployer = () => {
+import React from "react";
+import { useParams } from "react-router-dom";
+
+const ModBlog = () => {
+  const { id } = useParams();
+
+
   return (
     <>
       <div className="page-header">
@@ -9,13 +14,12 @@ const DashboardEmployer = () => {
           alignItems="flex-start"
           justifyContent="space-between"
         >
-          <div className="top-heading">Dashboard</div>
+          <div className="top-heading">Blog</div>
         </Stack>
       </div>
-
       <div className="page-body"></div>
     </>
   );
 };
 
-export default DashboardEmployer;
+export default ModBlog;

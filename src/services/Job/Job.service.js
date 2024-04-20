@@ -1,10 +1,12 @@
 import axios from "axios";
 
 //! createJob
-export const createJob = async () => {
+export const createJob = async (data) => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/job/createJob"
+      "http://localhost:5000/api/job/createJob",
+      data,
+      { headers: { "Content-Type": "application/json" } }
     );
     return response.data;
   } catch (error) {

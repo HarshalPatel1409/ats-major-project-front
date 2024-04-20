@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { auth, provider } from "./../../config/firebase";
 import { signInWithPopup } from "firebase/auth";
 import { authenticate } from "./../../services/Login/Login.service";
+import TextField from "@mui/material/TextField";
+import GoogleIcon from "@mui/icons-material/Google";
+
+import { Box, Stack, Typography } from "@mui/material";
 
 const Login = () => {
   const [authorize, setAuthorize] = useState(null);
@@ -47,40 +51,63 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login {authorize}</h2>
+    <div className="authentication-page">
+      <h2>Log In </h2>
+      {authorize ? (
+        <Typography fontWeight="500" variant="h4" mb={1}>
+          {authorize}
+        </Typography>
+      ) : null}
       {errorMessage}
-      {authorize !== null ? (
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit">Login</button>
-        </form>
-      ) : (
-        ""
-      )}
-
-      <button onClick={() => setAuthorize("candidate")}>Login Candidate</button>
-      <button onClick={() => setAuthorize("employer")}>Login Employer</button>
-      <button onClick={handleGoogleClick}>Sign In with google</button>
+      <Stack direction="column">
+        {authorize !== null ? (
+          <form onSubmit={handleSubmit}>
+            <Box>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+                required
+              />
+            </Box>
+            <Box mt="25px">
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                required
+              />
+            </Box>
+            <br />
+            <button className="common-button" type="submit">
+              Login
+            </button>
+          </form>
+        ) : (
+          ""
+        )}
+      </Stack>
+      <div style={{ margin: "1%" }}>
+        <button
+          className="common-button"
+          onClick={() => setAuthorize("candidate")}
+        >
+          Candidate
+        </button>
+        <button
+          className="common-button"
+          onClick={() => setAuthorize("employer")}
+        >
+          Employer
+        </button>
+        <button className="common-button" onClick={handleGoogleClick}>
+          <GoogleIcon /> Sign In with google
+        </button>
+      </div>
     </div>
   );
 };

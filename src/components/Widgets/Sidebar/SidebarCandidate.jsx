@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const SidebarCandidate = () => {
   const pages = [
-    { path: "/candidate/dashboard", label: "Dashboard" },
+    { path: "/candidate/", label: "Dashboard" },
     { path: "/candidate/job", label: "Job" },
     { path: "/candidate/application", label: "Application" },
     { path: "/candidate/email", label: "Email" },
@@ -12,15 +12,20 @@ const SidebarCandidate = () => {
     { path: "/candidate/profile", label: "Profile" },
     { path: "/candidate/setting", label: "Setting" },
   ];
+
+  const handleLogout = async () => {
+    localStorage.removeItem("user");
+    window.location.href = "/login";
+  };
+
   return (
     <div className="sidebar">
-      <ul>
-        {pages.map((page, index) => (
-          <li key={index}>
-            <Link to={page.path}>{page.label}</Link>
-          </li>
-        ))}
-      </ul>
+      {pages.map((page, index) => (
+        <div key={index}>
+          <Link to={page.path}>{page.label}</Link>
+        </div>
+      ))}
+      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 };

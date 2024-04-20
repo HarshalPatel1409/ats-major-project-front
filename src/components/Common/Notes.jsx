@@ -9,6 +9,7 @@ import {
 } from "./../../services/Note/Note.service";
 import NoteCard from "../Widgets/Card/NoteCard";
 import userLS from "./../../utils/userId";
+import { CircularProgress, Stack } from "@mui/material";
 
 const Notes = () => {
   const [notes, setNotes] = useState("");
@@ -83,16 +84,25 @@ const Notes = () => {
   }, []);
 
   return (
-    <div className="container">
-      <h1>Notes</h1>
-      <button
-        onClick={() => {
-          setCreatingNote(true);
-          handleShow();
-        }}
-      >
-        Create New Note
-      </button>
+    <>
+      <div className="page-header">
+        <Stack
+          direction="row"
+          alignItems="flex-start"
+          justifyContent="space-between"
+        >
+          <div className="top-heading">Notes</div>
+          <button
+            className="add-button"
+            onClick={() => {
+              setCreatingNote(true);
+              handleShow();
+            }}
+          >
+            Create Note
+          </button>
+        </Stack>
+      </div>
       {/* //! Modal */}
       <Modal size="lg" show={modalShow} onHide={handleClose} centered>
         <Modal.Header closeButton>
@@ -135,18 +145,22 @@ const Notes = () => {
         </Modal.Footer>
       </Modal>
 
-      {notes ? (
-        notes.map((item, index) => (
-          <NoteCard
-            key={index}
-            item={item}
-            onClick={() => handleOpenViewModal(item)}
-          />
-        ))
-      ) : (
-        <div>Loading...</div>
-      )}
-    </div>
+      <div className="page-body">
+        <div className="card-body">
+          {notes ? (
+            notes.map((item, index) => (
+              <NoteCard
+                key={index}
+                item={item}
+                onClick={() => handleOpenViewModal(item)}
+              />
+            ))
+          ) : (
+            <CircularProgress />
+          )}
+        </div>
+      </div>
+    </>
   );
 };
 

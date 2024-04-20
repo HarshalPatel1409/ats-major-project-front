@@ -1,1 +1,75 @@
-// @import "~bootstrap/scss/bootstrap";
+//! Import URL
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap");
+@import "./Sidebar.scss";
+@import "./JobDetails.scss";
+@import "./Authentication.scss";
+@import "./widget/Card.scss";
+@import "./widget/JobModal.scss";
+@import "./widget/FormTypes.scss";
+@import "./page/Applicant.scss";
+@import "./page/Job.scss";
+@import "./page/Note.scss";
+
+//! Website Default setting
+:root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+* {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  // border: 1px solid red;
+}
+
+//! colors
+$buttonBG: #5d87ff;
+$buttonText: #ffffff;
+$boxShadow: 2px 2px 5px 1px;
+
+//! value
+$radius: 10px;
+
+//! General Setting
+.page-header {
+  background-color: #ebf3fe;
+  padding: 2%;
+  border-radius: $radius;
+  .top-heading {
+    font-size: 36px;
+    font-weight: 600;
+  }
+
+  .add-button {
+    color: #{$buttonText};
+    background-color: #{$buttonBG};
+    border: none;
+    border-radius: $radius;
+    padding: 1% 4%;
+  }
+}
+
+.common-button {
+  color: #{$buttonText};
+  background-color: #{$buttonBG};
+  border: none;
+  text-wrap: nowrap;
+  border-radius: $radius;
+  padding: 2% 6%;
+  margin: 1%;
+}
+
+.delete-button {
+  color: #{$buttonText};
+  background-color: #fa896b;
+  border: none;
+  text-wrap: nowrap;
+  border-radius: $radius;
+  padding: 2% 6%;
+  margin: 1%;
+}
+
+.page-body {
+  margin-top: 2%;
+  border-radius: $radius;
+}

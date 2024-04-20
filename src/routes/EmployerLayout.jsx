@@ -1,17 +1,20 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import SidebarEmployer from "./../components/Widgets/Sidebar/SidebarEmployer";
+import Drawer from "./../components/Widgets/Sidebar/Drawer";
 import DashboardEmployer from "./../components/Employer/Dashboard";
 import Email from "./../components/Common/Email";
 import JobEmployer from "./../components/Employer/Job/Job";
 import CreateJob from "../components/Employer/Job/CreateJob";
 import Notes from "./../components/Common/Notes";
 import Ticket from "./../components/Common/Board";
-import ResourceEmployer from "./../components/Employer/Resource";
+import BlogEmployer from "./../components/Employer/Blog/Blog";
+import BlogMod from "./../components/Employer/Blog/ModBlog";
 import ProfileEmployer from "./../components/Employer/Profile";
 import SettingEmployer from "./../components/Employer/Setting";
 import UpdateJob from "../components/Employer/Job/UpdateJob";
 import Applications from "../components/Employer//Job/Applications";
+import Applicant from "../components/Employer/Job/Applicant";
 
 const EmployerLayout = () => {
   return (
@@ -25,11 +28,16 @@ const EmployerLayout = () => {
             <Route path="create" element={<CreateJob />} />
             <Route path="update/:id" element={<UpdateJob />} />
             <Route path="application/:id" element={<Applications />} />
+            <Route path="applicant/:id" element={<Applicant />} />
           </Route>
           <Route path="email" element={<Email />} />
           <Route path="notes" element={<Notes />} />
-          <Route path="resource" element={<ResourceEmployer />} />
+          <Route path="blog">
+            <Route index element={<BlogEmployer />} />
+            <Route path="mod/:id" element={<BlogMod />} />
+          </Route>
           <Route path="board" element={<Ticket />} />
+          <Route path="drawer" element={<Drawer />} />
           <Route path="profile" element={<ProfileEmployer />} />
           <Route path="setting" element={<SettingEmployer />} />
         </Routes>

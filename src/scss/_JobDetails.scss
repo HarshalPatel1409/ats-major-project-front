@@ -1,0 +1,22 @@
+.small-fields {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.field-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: center;
+  width: 50%;
+  margin-top: 2%;
+
+  label {
+    font-weight: 700;
+  }
+
+  input {
+    width: 70%;
+  }
+}

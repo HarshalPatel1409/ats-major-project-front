@@ -1,0 +1,13 @@
+//! value
+$radius: 10px;
+
+.authentication-page {
+  background-color: #ebf0ff;
+  height: 90vh;
+  border-radius: $radius;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 5px 1px;
+}

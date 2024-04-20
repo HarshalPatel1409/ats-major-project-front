@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getAllJobs } from "../../../services/Job/Job.service";
 import JobCard from "../../Widgets/Card/JobCard";
 import { useNavigate } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
 
 const Job = () => {
   let navigate = useNavigate();
@@ -11,7 +12,6 @@ const Job = () => {
     const path = `jobView/${job}`;
     navigate(path);
   };
-
 
   const getJobs = async () => {
     let response = await getAllJobs();
@@ -30,7 +30,7 @@ const Job = () => {
           <JobCard key={index} item={item} onClick={() => shoot(item._id)} />
         ))
       ) : (
-        <div>Loading...</div>
+        <CircularProgress />
       )}
     </div>
   );

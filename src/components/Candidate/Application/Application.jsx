@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { getMyApplication } from "../../../services/Application/Application.service";
 import ApplicationCard from "../../Widgets/Card/ApplicationCard";
 
+import CircularProgress from "@mui/material/CircularProgress";
+
 const Application = () => {
   let navigate = useNavigate();
   const [applications, setApplications] = useState();
@@ -39,7 +41,7 @@ const Application = () => {
           />
         ))
       ) : (
-        <div>Loading...</div>
+        <CircularProgress />
       )}
     </div>
   );

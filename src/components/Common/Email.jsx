@@ -7,6 +7,7 @@ import {
   sendMail,
 } from "../../services/Email/Email.service";
 import userLS from "./../../utils/userId";
+import { CircularProgress, Stack } from "@mui/material";
 
 const Email = () => {
   const [composeEmail, setComposeEmail] = useState("");
@@ -58,14 +59,23 @@ const Email = () => {
 
   return (
     <div className="container">
-      <h1>Email</h1>
-      <button
-        onClick={() => {
-          handleShow();
-        }}
-      >
-        Create New Note
-      </button>
+      <div className="page-header">
+        <Stack
+          direction="row"
+          alignItems="flex-start"
+          justifyContent="space-between"
+        >
+          <div className="top-heading">Email</div>
+          <button
+            className="add-button"
+            onClick={() => {
+              handleShow();
+            }}
+          >
+            Create New Email
+          </button>
+        </Stack>
+      </div>
       {/* //! Modal */}
       <Modal size="lg" show={modalShow} onHide={handleClose} centered>
         <Modal.Header closeButton>
@@ -117,7 +127,7 @@ const Email = () => {
           </div>
         ))
       ) : (
-        <div>Loading...</div>
+        <CircularProgress />
       )}
 
       <h3>Inbox Email</h3>
@@ -129,7 +139,7 @@ const Email = () => {
           </div>
         ))
       ) : (
-        <div>Loading...</div>
+        <CircularProgress />
       )}
     </div>
   );

@@ -1,0 +1,28 @@
+$focus: #f1f6fe;
+$field: #e2e2e2;
+
+//! form
+input {
+  height: 35px;
+  border-radius: $radius/2;
+  border: 2px solid #{$field};
+}
+
+input[type="text"]:focus {
+  background-color: #{$focus};
+}
+
+textarea {
+  border-radius: $radius/2;
+  border: 2px solid #{$field};
+}
+
+textarea:focus {
+  background-color: #{$focus};
+}
+
+select {
+  height: 35px;
+  border-radius: $radius/2;
+  border: 2px solid #{$field};
+}

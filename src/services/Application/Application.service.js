@@ -24,7 +24,7 @@ export const getAllApplications = async () => {
     );
     return response.data;
   } catch (error) {
-    console.error("Error fetching transactions:", error);
+    console.error("Error fetching application:", error);
     throw error;
   }
 };
@@ -39,14 +39,13 @@ export const getMyApplication = async (id) => {
     );
     return response.data;
   } catch (error) {
-    console.error("Error fetching transactions:", error);
+    console.error("Error fetching application:", error);
     throw error;
   }
 };
 
 //! getApplicationByJobId
 export const getApplicationByJobId = async (id) => {
-  console.log("service id => ", id);
   try {
     const response = await axios.post(
       "http://localhost:5000/api/application/getApplicationByJobId",
@@ -55,7 +54,21 @@ export const getApplicationByJobId = async (id) => {
     );
     return response.data;
   } catch (error) {
-    console.error("Error fetching transactions:", error);
+    console.error("Error fetching application:", error);
+    throw error;
+  }
+};
+
+//! Aggregation Pipeline
+export const getApplicantBio = async (id) => {
+  try {
+    const response = await axios.post(
+      `http://localhost:5000/api/application/getApplicantBio/${id}`,
+      { headers: { "Content-Type": "application/json" } }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching application:", error);
     throw error;
   }
 };
@@ -71,7 +84,7 @@ export const updateApplication = async (updatedData) => {
     );
     return response.data;
   } catch (error) {
-    console.error("Error fetching transactions:", error);
+    console.error("Error fetching application:", error);
     throw error;
   }
 };
@@ -87,7 +100,7 @@ export const deleteApplication = async (id) => {
     );
     return response.data;
   } catch (error) {
-    console.error("Error fetching transactions:", error);
+    console.error("Error fetching application:", error);
     throw error;
   }
 };

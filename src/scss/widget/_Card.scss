@@ -1,0 +1,15 @@
+//! Cards
+.card-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+  gap: 3%;
+}
+
+.main-card {
+  width: 30%;
+  margin-bottom: 3%;
+}
