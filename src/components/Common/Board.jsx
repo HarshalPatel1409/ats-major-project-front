@@ -3,7 +3,7 @@ import React from "react";
 
 const Board = () => {
   return (
-    <>
+    <div className="container">
       <div className="page-header">
         <Stack
           direction="row"
@@ -14,7 +14,7 @@ const Board = () => {
         </Stack>
       </div>
       <div className="page-body"></div>
-    </>
+    </div>
   );
 };
 

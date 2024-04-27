@@ -3,6 +3,7 @@ import { getJobById } from "./../../../services/Job/Job.service"; // Import the 
 import userLS from "./../../../utils/userId";
 import { useNavigate, useParams } from "react-router-dom";
 import { createApplication } from "../../../services/Application/Application.service";
+import { Stack } from "@mui/material";
 
 const JobView = () => {
   let navigate = useNavigate();
@@ -10,6 +11,7 @@ const JobView = () => {
   const [formData, setFormData] = useState({
     jobId: "",
     title: "",
+    company: "",
     description: "",
     requirements: "",
     responsibilities: "",
@@ -24,6 +26,7 @@ const JobView = () => {
     setFormData({
       jobId: resData._id,
       title: resData.title,
+      company: resData.company,
       description: resData.description,
       requirements: resData.requirements,
       responsibilities: resData.responsibilities,
@@ -54,31 +57,67 @@ const JobView = () => {
     getJobDetails(id);
   }, []);
   return (
-    <div>
-      <h2>Job Detail</h2>
-      <p>
-        <h4>Title:</h4> {formData.title}
-      </p>
-      <p>
-        <h4>Description:</h4> {formData.description}
-      </p>
-      <p>
-        <h4>Requirements:</h4> {formData.requirements}
-      </p>
-      <p>
-        <h4>Responsibilities:</h4> {formData.responsibilities}
-      </p>
-      <p>
-        <h4>Location:</h4> {formData.location}
-      </p>
-      <p>
-        <h4>Type:</h4> {formData.type}
-      </p>
-      <p>
-        <h4>Salary:</h4> {formData.salary}
-      </p>
-
-      <button onClick={handleApply}>Apply</button>
+    <div className="container">
+      <div className="page-header">
+        <Stack
+          direction="row"
+          alignItems="flex-start"
+          justifyContent="space-between"
+        >
+          <div className="top-heading">Job Details</div>
+        </Stack>
+      </div>
+      <div className="page-body">
+        <div className="candidate-job-details">
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Stack
+              direction="column"
+              justifyContent="flex-start"
+              alignItems="flex-start"
+            >
+              <label className="title">{formData.title}</label>
+              <label>{formData.company}</label>
+            </Stack>
+            <Stack
+              direction="column"
+              justifyContent="flex-end"
+              alignItems="flex-end"
+            >
+              <label>{formData.type}</label>
+              <label className="location">{formData.location}</label>
+            </Stack>
+          </Stack>
+          <Stack
+            direction="column"
+            justifyContent="flex-start"
+            alignItems="flex-start"
+          >
+            <div className="other-details">
+              <label className="heading">Description:</label>
+              <span>{formData.description}</span>
+            </div>
+            <div className="other-details">
+              <label className="heading">Requirements:</label>
+              <span>{formData.requirements}</span>
+            </div>
+            <div className="other-details">
+              <label className="heading">Responsibilities:</label>
+              <span>{formData.responsibilities}</span>
+            </div>
+            <div className="other-details">
+              <label className="heading">Salary:</label>
+              <span>{formData.salary}</span>
+            </div>
+          </Stack>
+          <button className="common-button" onClick={handleApply}>
+            Apply
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

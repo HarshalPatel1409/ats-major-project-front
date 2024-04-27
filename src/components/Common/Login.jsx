@@ -51,7 +51,7 @@ const Login = () => {
   };
 
   return (
-    <div className="authentication-page">
+    <div className="authentication-page container">
       <h2>Log In </h2>
       {authorize ? (
         <Typography fontWeight="500" variant="h4" mb={1}>
@@ -62,7 +62,7 @@ const Login = () => {
       <Stack direction="column">
         {authorize !== null ? (
           <form onSubmit={handleSubmit}>
-            <Box>
+            <div className="field-container" style={{ width: "150%" }}>
               <input
                 type="email"
                 id="email"
@@ -71,8 +71,8 @@ const Login = () => {
                 placeholder="Email"
                 required
               />
-            </Box>
-            <Box mt="25px">
+            </div>
+            <div className="field-container" style={{ width: "150%" }}>
               <input
                 type="password"
                 id="password"
@@ -81,7 +81,7 @@ const Login = () => {
                 placeholder="Password"
                 required
               />
-            </Box>
+            </div>
             <br />
             <button className="common-button" type="submit">
               Login

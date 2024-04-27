@@ -84,7 +84,7 @@ const Notes = () => {
   }, []);
 
   return (
-    <>
+    <div className="container">
       <div className="page-header">
         <Stack
           direction="row"
@@ -160,7 +160,7 @@ const Notes = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

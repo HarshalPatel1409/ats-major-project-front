@@ -5,7 +5,7 @@ export const createBlog = async (data) => {
   console.log("Data => ", data);
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/note/createBlog",
+      "http://localhost:5000/api/blog/createBlog",
       data,
       { headers: { "Content-Type": "application/json" } }
     );
@@ -20,7 +20,7 @@ export const createBlog = async (data) => {
 export const getAllBlogs = async () => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/note/getBlogs",
+      "http://localhost:5000/api/blog/getBlogs",
       { headers: { "Content-Type": "application/json" } }
     );
     return response.data;
@@ -34,7 +34,7 @@ export const getAllBlogs = async () => {
 export const getMyBlogs = async (id) => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/note/getMyBlogs",
+      "http://localhost:5000/api/blog/getMyBlogs",
       { id },
       { headers: { "Content-Type": "application/json" } }
     );
@@ -49,7 +49,7 @@ export const getMyBlogs = async (id) => {
 export const getBlogById = async (id) => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/application/getBlog",
+      "http://localhost:5000/api/blog/getBlog",
       { id },
       { headers: { "Content-Type": "application/json" } }
     );
@@ -65,7 +65,7 @@ export const updateBlog = async (updatedData) => {
   try {
     console.log("updatedData => ", updatedData);
     const response = await axios.post(
-      `http://localhost:5000/api/note/updateBlog`,
+      `http://localhost:5000/api/blog/updateBlog`,
       updatedData,
       { headers: { "Content-Type": "application/json" } }
     );
@@ -81,7 +81,7 @@ export const deleteBlog = async (id) => {
   try {
     console.log("id => ", id);
     const response = await axios.post(
-      `http://localhost:5000/api/note/deleteBlog`,
+      `http://localhost:5000/api/blog/deleteBlog`,
       { _id: id },
       { headers: { "Content-Type": "application/json" } }
     );

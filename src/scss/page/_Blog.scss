@@ -1,0 +1,19 @@
+.blog-main-card {
+  width: 30%;
+  margin-bottom: 3%;
+}
+
+.blog-card {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  padding: 2%;
+
+  p {
+    width: fit-content;
+    padding: 1% 3%;
+    margin-top: 10%;
+    border: 1px solid #5d87ff;
+    border-radius: 10px;
+  }
+}

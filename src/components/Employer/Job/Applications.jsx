@@ -30,7 +30,7 @@ const Applications = () => {
     getMyAllApplication(id);
   }, []);
   return (
-    <>
+    <div className="container">
       <div className="page-header">
         <Stack
           direction="row"
@@ -55,7 +55,7 @@ const Applications = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

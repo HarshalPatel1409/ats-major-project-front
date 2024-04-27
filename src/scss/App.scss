@@ -1,20 +1,21 @@
 //! Import URL
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap");
 @import "./Sidebar.scss";
-@import "./JobDetails.scss";
 @import "./Authentication.scss";
 @import "./widget/Card.scss";
 @import "./widget/JobModal.scss";
 @import "./widget/FormTypes.scss";
+@import "./page/Main.scss";
 @import "./page/Applicant.scss";
 @import "./page/Job.scss";
 @import "./page/Note.scss";
+@import "./page/Blog.scss";
+@import "./page/Profile.scss";
 
 //! Website Default setting
 :root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 * {
@@ -31,6 +32,9 @@ $boxShadow: 2px 2px 5px 1px;
 $radius: 10px;
 
 //! General Setting
+.container {
+  margin-top: 2rem;
+}
 .page-header {
   background-color: #ebf3fe;
   padding: 2%;
@@ -58,6 +62,12 @@ $radius: 10px;
   padding: 2% 6%;
   margin: 1%;
 }
+.common-button:hover {
+  background-color: #{$buttonText};
+  color: #{$buttonBG};
+  border: 1px solid #{$buttonBG};
+  box-shadow: 1px 1px 2px 1px;
+}
 
 .delete-button {
   color: #{$buttonText};
@@ -67,6 +77,13 @@ $radius: 10px;
   border-radius: $radius;
   padding: 2% 6%;
   margin: 1%;
+}
+
+.delete-button:hover {
+  background-color: #{$buttonText};
+  color: #fa896b;
+  border: 1px solid #fa896b;
+  box-shadow: 1px 1px 2px 1px;
 }
 
 .page-body {

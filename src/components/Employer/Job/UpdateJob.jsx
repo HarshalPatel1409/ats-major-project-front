@@ -12,6 +12,7 @@ const UpdateJob = () => {
   const [formData, setFormData] = useState({
     _id: "",
     title: "",
+    company: "",
     description: "",
     requirements: "",
     responsibilities: "",
@@ -37,6 +38,7 @@ const UpdateJob = () => {
         setFormData({
           _id: "",
           title: "",
+          company: "",
           description: "",
           requirements: "",
           responsibilities: "",
@@ -58,6 +60,7 @@ const UpdateJob = () => {
     setFormData({
       _id: resData._id,
       title: resData.title,
+      company: resData.company,
       description: resData.description,
       requirements: resData.requirements,
       responsibilities: resData.responsibilities,
@@ -71,7 +74,7 @@ const UpdateJob = () => {
     getJobDetails(id);
   }, []);
   return (
-    <>
+    <div className="container">
       <div className="page-header">
         <Stack
           direction="row"
@@ -128,6 +131,16 @@ const UpdateJob = () => {
                 </div>
               </div>
               <div className="field-container">
+                <label>Company:</label>
+                <input
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="field-container">
                 <label>Description:</label>{" "}
                 <textarea
                   name="description"
@@ -174,7 +187,7 @@ const UpdateJob = () => {
           </FormControl>
         </Stack>
       </div>
-    </>
+    </div>
   );
 };
 

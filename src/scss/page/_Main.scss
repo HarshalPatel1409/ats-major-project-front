@@ -1,0 +1,267 @@
+$buttonBG: #5d87ff;
+$otherBtn: #414a52;
+$buttonText: #ffffff;
+$radius: 5px;
+$fontWeight: 700;
+
+$headingText: 34px;
+
+$descColor: #636060;
+
+.main-btn {
+  color: #{$buttonText};
+  background-color: #{$buttonBG};
+  border: none;
+  text-wrap: nowrap;
+  border-radius: $radius;
+  height: 45px;
+  width: 95px;
+  padding: 1% 3%;
+  margin: 1%;
+}
+.main-btn:hover {
+  background-color: #{$buttonText};
+  color: #{$buttonBG};
+}
+
+.other-btn {
+  color: #{$buttonText};
+  background-color: #{$otherBtn};
+  border: none;
+  text-wrap: nowrap;
+  border-radius: $radius;
+  height: 45px;
+  width: 95px;
+  padding: 1% 3%;
+  margin: 1%;
+}
+.other-btn:hover {
+  background-color: #{$buttonText};
+  color: #{$otherBtn};
+}
+
+//! NavBar
+.main-navbar {
+  padding: 0% 2%;
+  color: white;
+  background-color: rgb(67, 66, 69);
+  border-radius: $radius;
+
+  label {
+    font-size: 25px;
+    font-weight: 700;
+  }
+  .login-btn {
+    color: #{$buttonText};
+    background-color: #{$buttonBG};
+    border: none;
+    text-wrap: nowrap;
+    border-radius: $radius;
+    padding: 1% 3%;
+    margin: 1%;
+  }
+
+  .login-btn:hover {
+    background-color: #{$buttonText};
+    color: #{$buttonBG};
+  }
+}
+
+//! Default Page Layout
+.body-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+
+  .heading-text {
+    font-size: $headingText;
+    font-weight: $fontWeight;
+    width: 60%;
+  }
+  .subheading-text {
+    width: 70%;
+    margin: 2% 0%;
+    font-size: 16px;
+    font-weight: $fontWeight;
+    color: $descColor;
+  }
+}
+
+//! Features
+.features-container {
+  .feature-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.feature-card {
+  width: 30%;
+  margin: 3% 1%;
+
+  .icon {
+    // border: 2px solid $descColor;
+    // border-radius: $radius;
+    // padding: 2%;
+  }
+
+  .title {
+    font-weight: $fontWeight;
+    font-size: 20px;
+    margin-top: 3%;
+  }
+
+  .descrition {
+    margin-top: 2%;
+  }
+}
+
+//! Company
+.company-container {
+  color: #ffffff;
+  width: 100%;
+  height: 15vh;
+  background-color: #3f4041;
+  border-radius: $radius;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//! Review
+.reviews-container {
+  background-color: #dfe5f8;
+  .review-cards-container {
+    width: 100%;
+    margin-top: 2rem;
+  }
+  .singleReview {
+    background-color: #ffffff;
+    margin: 0% 1.2%;
+    width: 33%;
+    padding: 3% 2%;
+    box-shadow: 0px 0px 5px 1px;
+    border-radius: $radius;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .comment {
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgb(153, 153, 153);
+    }
+
+    label {
+      margin-top: 1rem;
+      font-weight: $fontWeight;
+      font-size: 20px;
+    }
+  }
+}
+
+//! Pricing
+.pricing-container {
+  margin-top: 6%;
+  .pricing-cards-container {
+    width: 100%;
+    margin-top: 2rem;
+    gap: 3%;
+  }
+
+  .singlePlan {
+    width: 30%;
+    padding: 3% 2%;
+    box-shadow: 0px 0px 5px 1px;
+    border-radius: $radius;
+
+    .price {
+      margin-top: 4%;
+      font-weight: $fontWeight;
+    }
+    ul {
+      margin-top: 7%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    li {
+      color: #636060;
+      font-weight: 400;
+      margin-top: 1%;
+    }
+  }
+}
+
+//! Blogs
+.blogs-container {
+  background-color: #dfe5f8;
+  margin-top: 2rem;
+  .blog-cards-container {
+    width: 100%;
+  }
+
+  .singleBlog {
+    background-color: #ffffff;
+    margin: 0% 1.2%;
+    width: 33%;
+    padding: 3% 2%;
+    box-shadow: 0px 0px 5px 1px;
+    border-radius: $radius;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+
+    .title {
+      font-size: 20px;
+      font-weight: $fontWeight;
+    }
+    .excerpt {
+      margin-top: 3%;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgb(153, 153, 153);
+    }
+
+    .extra-details {
+      width: 100%;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      .author {
+        font-weight: 500;
+      }
+      .category {
+        color: #ffffff;
+        background-color: #5d87ff;
+        padding: 2% 4%;
+        border-radius: 50px;
+      }
+    }
+  }
+}
+
+//! Footer
+.footer-container {
+  background-color: black;
+  padding: 2%;
+  width: 100%;
+  // margin-top: 3%;
+  h3 {
+    font-weight: 800;
+    color: #ffffff;
+  }
+  label {
+    color: #ffffff;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    font-size: 18px;
+  }
+  span {
+    color: #bebebe;
+  }
+}

@@ -37,7 +37,7 @@ const Applicant = () => {
     getApplicantDetails(id);
   }, []);
   return (
-    <>
+    <div className="container">
       <div className="page-header">
         <Stack
           direction="row"
@@ -108,7 +108,7 @@ const Applicant = () => {
           )}
         </Stack>
       </div>
-    </>
+    </div>
   );
 };
 

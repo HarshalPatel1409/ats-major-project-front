@@ -24,7 +24,7 @@ const Job = () => {
   }, []);
 
   return (
-    <>
+    <div className="container">
       <div className="page-header">
         <Stack
           direction="row"
@@ -49,7 +49,7 @@ const Job = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

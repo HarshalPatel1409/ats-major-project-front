@@ -1,28 +1,56 @@
 $focus: #f1f6fe;
 $field: #e2e2e2;
+$radius: 5px;
 
-//! form
-input {
-  height: 35px;
-  border-radius: $radius/2;
-  border: 2px solid #{$field};
+//! field
+.small-fields {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
-input[type="text"]:focus {
-  background-color: #{$focus};
-}
+.field-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: center;
+  width: 50%;
+  margin-top: 2%;
 
-textarea {
-  border-radius: $radius/2;
-  border: 2px solid #{$field};
-}
+  label {
+    font-weight: 700;
+  }
 
-textarea:focus {
-  background-color: #{$focus};
-}
+  //! input
+  input {
+    width: 70%;
+    height: 35px;
+    border-radius: $radius;
+    border: 2px solid #{$field};
+  }
 
-select {
-  height: 35px;
-  border-radius: $radius/2;
-  border: 2px solid #{$field};
+  input[type="text"]:focus {
+    background-color: #{$focus};
+  }
+
+  //! textarea
+  textarea {
+    width: 70%;
+    height: 135px;
+    border-radius: $radius;
+    border: 2px solid #{$field};
+  }
+
+  textarea:focus {
+    background-color: #{$focus};
+  }
+
+  //! select
+  select {
+    width: 70%;
+    height: 35px;
+    border-radius: $radius;
+    border: 2px solid #{$field};
+  }
 }

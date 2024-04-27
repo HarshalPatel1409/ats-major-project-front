@@ -3,7 +3,7 @@ import React from "react";
 
 const SettingEmployer = () => {
   return (
-    <div>
+    <div className="container">
       <div className="page-header">
         <Stack
           direction="row"

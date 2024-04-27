@@ -10,6 +10,7 @@ const CreateJob = () => {
   let navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
+    company: "",
     description: "",
     requirements: "",
     responsibilities: "",
@@ -40,6 +41,7 @@ const CreateJob = () => {
       if (message == "Job created successfully") {
         setFormData({
           title: "",
+          company: "",
           description: "",
           requirements: "",
           responsibilities: "",
@@ -56,7 +58,7 @@ const CreateJob = () => {
   };
 
   return (
-    <>
+    <div className="container">
       <div className="page-header">
         <Stack
           direction="row"
@@ -114,6 +116,16 @@ const CreateJob = () => {
                 </div>
               </div>
               <div className="field-container">
+                <label>Company:</label>
+                <input
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="field-container">
                 <label>Description:</label>
                 {/* <ReactQuill
                 theme="snow"
@@ -162,7 +174,7 @@ const CreateJob = () => {
           </FormControl>
         </Stack>
       </div>
-    </>
+    </div>
   );
 };
 

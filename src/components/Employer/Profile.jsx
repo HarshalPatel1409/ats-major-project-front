@@ -3,7 +3,7 @@ import React from "react";
 
 const ProfileEmployer = () => {
   return (
-    <>
+    <div className="container">
       <div className="page-header">
         <Stack
           direction="row"
@@ -14,7 +14,7 @@ const ProfileEmployer = () => {
         </Stack>
       </div>
       <div className="page-body"></div>
-    </>
+    </div>
   );
 };
 

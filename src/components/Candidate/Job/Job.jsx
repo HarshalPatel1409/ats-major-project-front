@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getAllJobs } from "../../../services/Job/Job.service";
 import JobCard from "../../Widgets/Card/JobCard";
 import { useNavigate } from "react-router-dom";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, Stack } from "@mui/material";
 
 const Job = () => {
   let navigate = useNavigate();
@@ -23,15 +23,31 @@ const Job = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Jobs</h1>
-      {jobs ? (
-        jobs.map((item, index) => (
-          <JobCard key={index} item={item} onClick={() => shoot(item._id)} />
-        ))
-      ) : (
-        <CircularProgress />
-      )}
+    <div className="container">
+      <div className="page-header">
+        <Stack
+          direction="row"
+          alignItems="flex-start"
+          justifyContent="space-between"
+        >
+          <div className="top-heading">Jobs</div>
+        </Stack>
+      </div>
+      <div className="page-body">
+        <div className="card-body">
+          {jobs ? (
+            jobs.map((item, index) => (
+              <JobCard
+                key={index}
+                item={item}
+                onClick={() => shoot(item._id)}
+              />
+            ))
+          ) : (
+            <CircularProgress />
+          )}
+        </div>
+      </div>
     </div>
   );
 };
