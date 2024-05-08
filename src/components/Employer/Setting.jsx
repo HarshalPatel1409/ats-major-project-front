@@ -1,5 +1,6 @@
 import { Stack } from "@mui/material";
 import React from "react";
+import ChangePassword from "../Widgets/ChangePassword";
 
 const SettingEmployer = () => {
   return (
@@ -13,7 +14,9 @@ const SettingEmployer = () => {
           <div className="top-heading">Setting</div>
         </Stack>
       </div>
-      <div className="page-body"></div>
+      <div className="page-body">
+        <ChangePassword />
+      </div>
     </div>
   );
 };

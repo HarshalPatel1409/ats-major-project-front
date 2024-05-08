@@ -1,9 +1,11 @@
 import { Stack } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { getProfileById } from "../../services/Candidate/Candidate.service";
-import userLS from "../../utils/userId";
+import { getProfileById } from "../../../services/Candidate/Candidate.service";
+import { useNavigate } from "react-router-dom";
+import userLS from "../../../utils/userId";
 
 const ProfileCandidate = () => {
+  let navigate = useNavigate();
   const [profile, setProfile] = useState({
     name: "",
     email: "",
@@ -29,6 +31,12 @@ const ProfileCandidate = () => {
     }
   };
 
+  const goToUpdate = () => {
+    const { _id } = userLS();
+    const path = `update/${_id}`;
+    navigate(path);
+  };
+
   useEffect(() => {
     getProfile();
   }, []);
@@ -41,7 +49,9 @@ const ProfileCandidate = () => {
           justifyContent="space-between"
         >
           <div className="top-heading">Profile</div>
-          <button className="add-button">Edit </button>
+          <button className="add-button" onClick={goToUpdate}>
+            Edit
+          </button>
         </Stack>
       </div>
 

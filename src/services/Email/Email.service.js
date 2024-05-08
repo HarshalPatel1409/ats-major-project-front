@@ -15,11 +15,26 @@ export const sendMail = async (data) => {
   }
 };
 
-//! getMyComposeMail
-export const getMyComposeMail = async (email) => {
+//! getMailById
+export const getMailById = async (id) => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/service/getMyComposeMail",
+      "http://localhost:5000/api/service/getMailById",
+      { id },
+      { headers: { "Content-Type": "application/json" } }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching transactions:", error);
+    throw error;
+  }
+};
+
+//! getMyAllMails
+export const getMyAllMails = async (email) => {
+  try {
+    const response = await axios.post(
+      "http://localhost:5000/api/service/getMyAllMails",
       { email },
       { headers: { "Content-Type": "application/json" } }
     );
@@ -30,12 +45,13 @@ export const getMyComposeMail = async (email) => {
   }
 };
 
-//! getMyInbox
-export const getMyInbox = async (email) => {
+//! updateEmail
+export const updateEmail = async (updatedData) => {
   try {
+    console.log("updatedData => ", updatedData);
     const response = await axios.post(
-      "http://localhost:5000/api/service/getMyInbox",
-      { email },
+      `http://localhost:5000/api/blog/updateEmail`,
+      updatedData,
       { headers: { "Content-Type": "application/json" } }
     );
     return response.data;

@@ -1,4 +1,51 @@
 //!Applications
+.applicants-list {
+  width: 100%;
+  .heading {
+    font-weight: 700;
+    font-size: 18px;
+    padding: 2% 0%;
+    border-bottom: 1px solid #e8f7ff;
+  }
+}
+
+.single-candidate-row {
+  padding: 2% 0%;
+  border-bottom: 1px solid #e8f7ff;
+  border-radius: 10px;
+
+  .status {
+    border-radius: 10px;
+    padding: 1% 3%;
+    color: #ffffff;
+    font-weight: 600;
+  }
+  .applied {
+    color: #49beff;
+    background-color: #e8f7ff;
+  }
+  .review {
+    color: #5d87ff;
+    background-color: #ecf2ff;
+  }
+  .interview {
+    color: #eb7900;
+    background-color: #ffe2b1;
+  }
+  .reject {
+    color: #fa896b;
+    background-color: #fdede8;
+  }
+  .hired {
+    color: #13deb9;
+    background-color: #e6fffa;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: #ebf3fe;
+  }
+}
 
 //! ApplicationCard
 .applicant-card {

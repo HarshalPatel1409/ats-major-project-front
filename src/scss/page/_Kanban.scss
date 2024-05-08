@@ -1,0 +1,90 @@
+$radius: 5px;
+
+.kanban-board {
+  display: flex;
+  margin-bottom: 2rem;
+
+  .kanban-column {
+    width: 25%;
+    .column-heading {
+      margin: 2%;
+      padding: 2%;
+      border-radius: $radius;
+      color: #ffffff;
+
+      h3 {
+        font-weight: 700;
+      }
+    }
+
+    .addcard-textarea {
+      width: 100%;
+      border-radius: $radius;
+      border-width: 2px;
+      border-color: #5321c8;
+      background-color: #8b5cf6;
+      padding: 0.75rem;
+      color: #d1d5db;
+    }
+    .addcard-textarea::placeholder {
+      color: #c084fc; /* Replace #c084fc with your desired color */
+    }
+    .addcard-textarea:focus {
+      outline: none; /* Equivalent to Tailwind's focus:outline-0 */
+    }
+  }
+
+  .kanban-card {
+    .card-dropindicator {
+      margin-top: 0.125rem;
+      margin-bottom: 0.125rem;
+
+      height: 0.2rem;
+      width: 100%;
+      border-radius: $radius;
+      background-color: #8b5cf6;
+      opacity: 0;
+    }
+
+    .card-motion {
+      border: 1px solid rgb(55, 55, 55);
+      border-radius: $radius;
+      margin: 2%;
+      padding: 2%;
+      cursor: grab;
+    }
+  }
+}
+
+.BurnBarrel {
+  font-size: 3rem;
+  margin-top: 2.5rem;
+  height: 4rem;
+  width: 100%;
+  flex-shrink: 0;
+  place-content: center;
+  border-radius: 0.25rem;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.active {
+  border: 3px solid #c00909;
+  background-color: #e15353;
+  color: #ffffff;
+}
+
+.add-button {
+  color: #ffffff;
+  background-color: rgb(88, 88, 88);
+  border: none;
+  border-radius: $radius;
+}
+.close-button {
+  color: #ffffff;
+  background-color: #d74a4a;
+  margin-right: 2%;
+  border: none;
+  border-radius: $radius;
+}

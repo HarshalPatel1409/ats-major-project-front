@@ -1,20 +1,19 @@
 import React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import { CardActionArea } from "@mui/material";
+import { Grid } from "@mui/material";
 
 const ApplicationCard = ({ item, onClick }) => {
   return (
-    <Card className="main-card">
-      <CardActionArea>
-        <CardContent>
-          <div className="applicant-card" onClick={onClick}>
-            <h3 className="title">{item.candidate[0].name}</h3>
-            <p className="location"> {item.status}</p>
-          </div>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+    <Grid container onClick={onClick} className="single-candidate-row">
+      <Grid item xs>
+        {item.candidate[0].name}
+      </Grid>
+      <Grid item xs>
+        <span className={`status ${item.status}`}>{item.status}</span>
+      </Grid>
+      <Grid item xs>
+        {item.jobTitle}
+      </Grid>
+    </Grid>
   );
 };
 

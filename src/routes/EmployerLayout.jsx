@@ -3,11 +3,12 @@ import { Route, Routes } from "react-router-dom";
 import SidebarEmployer from "./../components/Widgets/Sidebar/SidebarEmployer";
 import Drawer from "./../components/Widgets/Sidebar/Drawer";
 import DashboardEmployer from "./../components/Employer/Dashboard";
-import Email from "./../components/Common/Email";
+import Email from "./../components/Common/Email/Email";
+import EmailDetails from "../components/Common/Email/EmailDetails";
 import JobEmployer from "./../components/Employer/Job/Job";
 import CreateJob from "../components/Employer/Job/CreateJob";
 import Notes from "./../components/Common/Notes";
-import Ticket from "./../components/Common/Board";
+import Ticket from "./../components/Common/Board/Board";
 import BlogEmployer from "./../components/Employer/Blog/Blog";
 import BlogMod from "./../components/Employer/Blog/ModBlog";
 import ProfileEmployer from "./../components/Employer/Profile";
@@ -30,7 +31,10 @@ const EmployerLayout = () => {
             <Route path="application/:id" element={<Applications />} />
             <Route path="applicant/:id" element={<Applicant />} />
           </Route>
-          <Route path="email" element={<Email />} />
+          <Route path="email">
+            <Route index element={<Email />} />
+            <Route path=":id" element={<EmailDetails />} />
+          </Route>
           <Route path="notes" element={<Notes />} />
           <Route path="blog">
             <Route index element={<BlogEmployer />} />

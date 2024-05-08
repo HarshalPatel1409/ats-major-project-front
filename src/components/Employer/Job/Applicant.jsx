@@ -92,7 +92,6 @@ const Applicant = () => {
                       <option value="applied">Applied</option>
                       <option value="review">Review</option>
                       <option value="interview">Interview</option>
-                      <option value="process">In Process</option>
                       <option value="hired">Hired</option>
                       <option value="reject">Rejected</option>
                     </select>
