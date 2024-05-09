@@ -41,3 +41,28 @@
     }
   }
 }
+
+.tag-container {
+  display: flex;
+  flex-direction: row;
+
+  width: 100%;
+  gap: 2;
+  padding: 2% 0%;
+  .tag {
+    font-weight: 700;
+    color: #5d87ff;
+    background-color: #e8f7ff;
+    border-radius: 10px;
+    padding: 1% 2%;
+    margin-right: 2%;
+    text-wrap: nowrap;
+
+    button {
+      margin-left: 1rem;
+      background-color: #e8f7ff;
+      border: none;
+      border-radius: 50px;
+    }
+  }
+}

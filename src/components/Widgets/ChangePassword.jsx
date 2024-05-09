@@ -58,7 +58,6 @@ const ChangePassword = () => {
             value={newPassword}
             style={{ width: "100%" }}
             onChange={(e) => setNewPassword(e.target.value)}
-            autoFocus
           />
         </div>
         <div className="field-container">
@@ -69,7 +68,6 @@ const ChangePassword = () => {
             value={cnewPassword}
             style={{ width: "100%" }}
             onChange={(e) => setCNewPassword(e.target.value)}
-            autoFocus
           />
         </div>
         <button className="common-button" onClick={() => handlePassword()}>

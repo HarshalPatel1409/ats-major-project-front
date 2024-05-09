@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getProfileById } from "../../../services/Candidate/Candidate.service";
+import {
+  getProfileById,
+  updateProfile,
+} from "../../../services/Candidate/Candidate.service";
 import userLS from "../../../utils/userId";
 import { Stack } from "@mui/material";
 import { RxCross2 } from "react-icons/rx";
@@ -10,12 +13,10 @@ const ProfileUpdate = () => {
   const [phone, setPhone] = useState();
   const [location, setLocation] = useState();
   const [skills, setSkills] = useState([]);
-  const [languages, setLanguages] = useState([]);
-  // const [experience, setExperience] = useState([]);
-  // const [education, setEducation] = useState([
-  //   { degree: "", university: "", completionYear: "" },
-  // ]);
+  const [educations, setEducations] = useState([]);
+  const [experiences, setExperiences] = useState([]);
 
+  //!  Skills
   const handleAddSkill = (e) => {
     e.preventDefault();
     const newSkill = e.target.skill.value;
@@ -24,44 +25,82 @@ const ProfileUpdate = () => {
       e.target.reset();
     }
   };
-
-  const handleAddLanguage = (e) => {
-    e.preventDefault();
-    const newLanguage = e.target.language.value;
-    if (newLanguage) {
-      setLanguages([...languages, newLanguage]);
-      e.target.reset();
-    }
-  };
-
   const handleRemoveSkill = (index) => {
     const updatedSkills = skills.filter((_, i) => i !== index);
     setSkills(updatedSkills);
   };
 
-  const handleRemoveLanguage = (index) => {
-    const updatedLanguages = languages.filter((_, i) => i !== index);
-    setLanguages(updatedLanguages);
+  //!  Education
+  const handleAddEducation = () => {
+    setEducations([
+      ...educations,
+      { degree: "", university: "", educationYear: "" },
+    ]);
   };
 
-  //!  Education
-  // const handleAddEducationField = () => {
-  //   setEducation([
-  //     ...education,
-  //     { degree: "", university: "", completionYear: "" },
-  //   ]);
-  // };
-  // const handleRemoveEducationField = (index) => {
-  //   const updatedEducation = [...education];
-  //   updatedEducation.splice(index, 1);
-  //   setEducation(updatedEducation);
-  // };
+  const handleEducationChange = (index, event) => {
+    const updatedEducations = [...educations];
+    updatedEducations[index][event.target.name] = event.target.value;
+    setEducations(updatedEducations);
+  };
 
-  //! Submit
-  const handleUpdateProfile = (e) => {
+  const handleRemoveEducation = (index) => {
+    const updatedEducations = [...educations];
+    updatedEducations.splice(index, 1);
+    setEducations(updatedEducations);
+  };
+
+  //!  Experience
+  const handleAddExperience = () => {
+    setExperiences([
+      ...experiences,
+      {
+        position: "",
+        company: "",
+        description: "",
+        from: { month: "", year: "" },
+        to: { month: "", year: "" },
+      },
+    ]);
+  };
+
+  const handleExperienceChange = (index, event) => {
+    const updatedExperiences = [...experiences];
+    const targetProperty = event.target.name.split("."); // Handle nested properties (e.g., 'from.month')
+    if (targetProperty.length === 2) {
+      updatedExperiences[index][targetProperty[0]][targetProperty[1]] =
+        event.target.value;
+    } else {
+      updatedExperiences[index][event.target.name] = event.target.value;
+    }
+    setExperiences(updatedExperiences);
+  };
+
+  const handleRemoveExperience = (index) => {
+    const updatedExperiences = [...experiences];
+    updatedExperiences.splice(index, 1);
+    setExperiences(updatedExperiences);
+  };
+
+  //! Submit -----------------------------------------------------------------------------------------------
+  const handleUpdateProfile = async (e) => {
     e.preventDefault();
-    // You can perform the update operation here
-    console.log("Profile updated successfully!");
+    try {
+      const { _id } = userLS();
+      let data = {
+        _id,
+        name,
+        phone,
+        location,
+        skills,
+        educations,
+        experiences,
+      };
+      const response = await updateProfile(data);
+      alert(response.message);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getProfile = async () => {
@@ -69,16 +108,14 @@ const ProfileUpdate = () => {
     const response = await getProfileById(_id);
 
     const resData = response.data[0];
-    // console.log("resData => ", resData);
     if (response.message === "Profile fetched successfully") {
       setName(resData.name);
       setEmail(resData.email);
       setPhone(resData.phone);
       setLocation(resData.location);
       setSkills(resData.skills);
-      setLanguages(resData.languages);
-      // setExperience(resData.experience);
-      // setEducation(resData.education);
+      setEducations(resData.educations);
+      setExperiences(resData.experiences);
     }
   };
 
@@ -98,8 +135,9 @@ const ProfileUpdate = () => {
         </Stack>
       </div>
       <div className="page-body">
-        <form onSubmit={handleUpdateProfile}>
-          <div>
+        <div className="profile-section">
+          <h3>Baisc Details</h3>
+          <div className="field-container">
             <label>Name:</label>
             <input
               type="text"
@@ -107,15 +145,17 @@ const ProfileUpdate = () => {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div>
+
+          <div className="field-container">
             <label>Email:</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              disabled
             />
           </div>
-          <div>
+          <div className="field-container">
             <label>Phone:</label>
             <input
               type="tel"
@@ -123,7 +163,7 @@ const ProfileUpdate = () => {
               onChange={(e) => setPhone(e.target.value)}
             />
           </div>
-          <div>
+          <div className="field-container">
             <label>Location:</label>
             <input
               type="text"
@@ -131,49 +171,171 @@ const ProfileUpdate = () => {
               onChange={(e) => setLocation(e.target.value)}
             />
           </div>
+        </div>
 
-          <div>
+        <div className="profile-section">
+          <div className="field-container">
             <label>Skills:</label>
-            <ul>
+            <form onSubmit={handleAddSkill} style={{ width: "100%" }}>
+              <input type="text" name="skill" style={{ width: "70%" }} />
+              <button className="simple-button" type="submit">
+                Add Skill
+              </button>
+            </form>
+            <div className="tag-container">
               {skills
                 ? skills.map((skill, index) => (
-                    <li key={index}>
+                    <span className="tag" key={index}>
                       {skill}
                       <button onClick={() => handleRemoveSkill(index)}>
                         X
                       </button>
-                    </li>
+                    </span>
                   ))
                 : ""}
-            </ul>
-            <form onSubmit={handleAddSkill}>
-              <input type="text" name="skill" />
-              <button type="submit">Add Skill</button>
-            </form>
+            </div>
           </div>
-          <div>
-            <label>Languages:</label>
-            <ul>
-              {languages
-                ? languages.map((language, index) => (
-                    <li key={index}>
-                      {language}
-                      <button onClick={() => handleRemoveLanguage(index)}>
-                        X
-                      </button>
-                    </li>
-                  ))
-                : ""}
-            </ul>
-            <form onSubmit={handleAddLanguage}>
-              <input type="text" name="language" />
-              <button type="submit">Add Language</button>
-            </form>
-          </div>
-          <button className="common-button" type="submit">
-            Update
+        </div>
+        {/* //! Education */}
+        <div className="profile-section">
+          <h3>Education</h3>
+          {educations
+            ? educations.map((education, index) => (
+                <div key={index} className="field-container">
+                  <label htmlFor={`degree-${index}`}>Degree:</label>
+                  <input
+                    type="text"
+                    id={`degree-${index}`}
+                    name="degree"
+                    value={education.degree}
+                    onChange={(event) => handleEducationChange(index, event)}
+                  />
+                  <br />
+
+                  <label htmlFor={`university-${index}`}>University:</label>
+                  <input
+                    type="text"
+                    id={`university-${index}`}
+                    name="university"
+                    value={education.university}
+                    onChange={(event) => handleEducationChange(index, event)}
+                  />
+                  <br />
+
+                  <label htmlFor={`educationYear-${index}`}>
+                    Education Year:
+                  </label>
+                  <input
+                    type="text"
+                    id={`educationYear-${index}`}
+                    name="educationYear"
+                    value={education.educationYear}
+                    onChange={(event) => handleEducationChange(index, event)}
+                  />
+                  <br />
+
+                  {index > -1 && (
+                    <button
+                      className="delete-button"
+                      onClick={() => handleRemoveEducation(index)}
+                    >
+                      Remove
+                    </button>
+                  )}
+                </div>
+              ))
+            : ""}
+          <button className="simple-button" onClick={handleAddEducation}>
+            Add Education
           </button>
-        </form>
+        </div>
+
+        {/* //! Experience */}
+        <div className="profile-section">
+          <h3>Experience</h3>
+          {experiences.length > 0 &&
+            experiences.map((experience, index) => (
+              <div key={index} className="field-container">
+                <label htmlFor={`position-${index}`}>Position:</label>
+                <input
+                  type="text"
+                  id={`position-${index}`}
+                  name="position"
+                  value={experience.position}
+                  onChange={(event) => handleExperienceChange(index, event)}
+                />
+
+                <label htmlFor={`company-${index}`}>Company:</label>
+                <input
+                  type="text"
+                  id={`company-${index}`}
+                  name="company"
+                  value={experience.company}
+                  onChange={(event) => handleExperienceChange(index, event)}
+                />
+
+                <label htmlFor={`description-${index}`}>Description:</label>
+                <textarea
+                  id={`description-${index}`}
+                  name="description"
+                  value={experience.description}
+                  onChange={(event) => handleExperienceChange(index, event)}
+                />
+
+                <label htmlFor={`from-month-${index}`}>Start Month:</label>
+                <input
+                  type="text"
+                  id={`from-month-${index}`}
+                  name="from.month"
+                  value={experience.from.month}
+                  onChange={(event) => handleExperienceChange(index, event)}
+                />
+
+                <label htmlFor={`from-year-${index}`}>Start Year:</label>
+                <input
+                  type="text"
+                  id={`from-year-${index}`}
+                  name="from.year"
+                  value={experience.from.year}
+                  onChange={(event) => handleExperienceChange(index, event)}
+                />
+
+                <label htmlFor={`to-month-${index}`}>End Month:</label>
+                <input
+                  type="text"
+                  id={`to-month-${index}`}
+                  name="to.month"
+                  value={experience.to.month}
+                  onChange={(event) => handleExperienceChange(index, event)}
+                />
+
+                <label htmlFor={`to-year-${index}`}>End Year:</label>
+                <input
+                  type="text"
+                  id={`to-year-${index}`}
+                  name="to.year"
+                  value={experience.to.year}
+                  onChange={(event) => handleExperienceChange(index, event)}
+                />
+
+                {index > -1 && (
+                  <button
+                    className="delete-button"
+                    onClick={() => handleRemoveExperience(index)}
+                  >
+                    Remove
+                  </button>
+                )}
+              </div>
+            ))}
+          <button className="simple-button" onClick={handleAddExperience}>
+            Add Experience
+          </button>
+        </div>
+
+        <button className="common-button" onClick={handleUpdateProfile}>
+          Update
+        </button>
       </div>
     </div>
   );
