@@ -16,12 +16,15 @@ import SettingEmployer from "./../components/Employer/Setting";
 import UpdateJob from "../components/Employer/Job/UpdateJob";
 import Applications from "../components/Employer//Job/Applications";
 import Applicant from "../components/Employer/Job/Applicant";
+import { Grid } from "@mui/material";
 
 const EmployerLayout = () => {
   return (
-    <div style={{ display: "flex" }}>
-      <SidebarEmployer />
-      <div style={{ flex: 1 }}>
+    <Grid container>
+      <Grid item xs={"2"}>
+        <SidebarEmployer />
+      </Grid>
+      <Grid item xs={"10"}>
         <Routes>
           <Route index element={<DashboardEmployer />} />
           <Route path="job">
@@ -45,8 +48,8 @@ const EmployerLayout = () => {
           <Route path="profile" element={<ProfileEmployer />} />
           <Route path="setting" element={<SettingEmployer />} />
         </Routes>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   );
 };
 

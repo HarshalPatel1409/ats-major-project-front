@@ -8,6 +8,8 @@ import Pricing from "./Pricing";
 import Footer from "../Widgets/Main/Footer";
 import Review from "./Review";
 import Blog from "./Blog";
+import Scroll from "./Scroll";
+import SomeCards from "./SomeCards";
 const Home = () => {
   const redirectToLogin = () => {
     window.location.href = "/login";
@@ -17,8 +19,11 @@ const Home = () => {
       <Navbar />
       <Stack direction="column" justifyContent="center" alignItems="center">
         <Main />
-        <Features />
+        {/* <Features /> */}
+        {/* //! Features card */}
+        <SomeCards />
         <Company />
+        {/* <Scroll /> */}
         <Review />
         <Pricing />
         <Blog />

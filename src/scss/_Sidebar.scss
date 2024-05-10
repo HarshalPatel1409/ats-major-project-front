@@ -1,20 +1,35 @@
-/*! SideBar  */
+/*//! SideBar  */
+$buttonBG: #5d87ff;
+$buttonText: #ffffff;
 
 .sidebar {
   font-family: "Plus Jakarta Sans", sans-serif;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 250px;
-  height: 100%;
+  width: 100%;
+  height: 100vh;
+  padding: 2% 15%;
   background-color: #ffffff;
-  padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-  .links {
-    text-decoration: none;
-    color: red;
-    &:hover {
-      font-size: 150%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .path-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .apath {
+      margin: 2% 0%;
+      width: 100%;
+      padding: 0.7rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      &:hover {
+        cursor: pointer;
+        color: #ffffff;
+        background-color: $buttonBG;
+      }
     }
   }
 }

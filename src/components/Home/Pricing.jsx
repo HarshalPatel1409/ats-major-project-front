@@ -6,34 +6,44 @@ const Pricing = () => {
     {
       id: 1,
       plan: "Basic",
-      price: "299/month",
+      base: "Everything to start",
+      price: "299",
+      per: "month",
       features: [
-        "Up to 10 active job postings",
+        " 10 active job postings",
         "Basic candidate tracking",
         "Email support",
+        "Kanban Board",
+        "No Customization",
       ],
     },
     {
       id: 2,
       plan: "Standard",
-      price: "599/month",
+      base: "Everything to launch",
+      price: "599",
+      per: "month",
+      color: "purple",
       features: [
-        "Up to 25 active job postings",
-        "Advanced candidate tracking",
+        "50 active job postings",
+        "Adv. candidate tracking",
         "Email and live chat support",
+        "Kanban Board",
         "Customizable branding",
       ],
     },
     {
       id: 3,
       plan: "Premium",
-      price: "999/month",
+      base: "Everything to go public",
+      price: "999",
+      per: "month",
       features: [
         "Unlimited active job postings",
-        "Advanced candidate tracking with analytics",
+        "Adv. candidate tracking & analytics",
         "Priority email and live chat support",
-        "Customizable branding and integration options",
-        "Dedicated account manager",
+        "Kanban Board",
+        "Personal Support",
       ],
     },
   ];
@@ -58,15 +68,20 @@ export default Pricing;
 
 const SinglePlan = ({ plan }) => {
   return (
-    <div className="singlePlan">
-      <h3>{plan.plan}</h3>
-      <p className="price">{plan.price}</p>
-      <button className="common-button">Choose Plan</button>
+    <div className={`singlePlan ${plan.color}`}>
+      <h5 style={{ fontWeight: "800" }}>{plan.plan}</h5>
+      <span className="just-text">{plan.base}</span>
+      <p className="price">
+        <span>Rs{plan.price}</span>/ {plan.per}
+      </p>
       <ul>
         {plan.features.map((feature, idx) => (
-          <li key={idx}>{feature}</li>
+          <li className="just-text" key={idx}>
+            {feature}
+          </li>
         ))}
       </ul>
+      <button className="black-button">Choose Plan</button>
     </div>
   );
 };

@@ -13,12 +13,15 @@ import ProfileCandidate from "../components/Candidate/Profile/Profile";
 import SettingCandidate from "./../components/Candidate/Setting";
 import ProfileUpdate from "../components/Candidate/Profile/ProfileUpdate";
 import EmailDetails from "../components/Common/Email/EmailDetails";
+import { Grid } from "@mui/material";
 
 const CandidateLayout = () => {
   return (
-    <div style={{ display: "flex" }}>
-      <SidebarCandidate />
-      <div style={{ flex: 1 }}>
+    <Grid container>
+      <Grid item xs={"2"}>
+        <SidebarCandidate />
+      </Grid>
+      <Grid item xs={"10"}>
         <Routes>
           <Route index element={<DashboardCandidate />} />
           <Route path="job">
@@ -41,8 +44,8 @@ const CandidateLayout = () => {
           </Route>
           <Route path="setting" element={<SettingCandidate />} />
         </Routes>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   );
 };
 

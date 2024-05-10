@@ -1,6 +1,7 @@
 $buttonBG: #5d87ff;
 $otherBtn: #414a52;
 $buttonText: #ffffff;
+$purpleColor: #6423f2;
 $radius: 5px;
 $fontWeight: 700;
 
@@ -167,6 +168,7 @@ $descColor: #636060;
 //! Pricing
 .pricing-container {
   margin-top: 6%;
+  width: 90%;
   .pricing-cards-container {
     width: 100%;
     margin-top: 2rem;
@@ -174,29 +176,69 @@ $descColor: #636060;
   }
 
   .singlePlan {
-    width: 30%;
+    width: 33%;
     padding: 3% 2%;
-    box-shadow: 0px 0px 5px 1px;
-    border-radius: $radius;
+    border: 1px solid #949494;
+    border-radius: $radius * 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 
-    .price {
-      margin-top: 4%;
-      font-weight: $fontWeight;
+    .just-text {
+      font-size: 14px;
     }
+    .price {
+      margin-top: 8%;
+      span {
+        font-size: 34px;
+        font-weight: $fontWeight;
+      }
+    }
+
     ul {
-      margin-top: 7%;
+      margin-top: 3%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
+      align-items: flex-start;
     }
     li {
-      color: #636060;
-      font-weight: 400;
+      font-size: 10px;
+      color: #373737;
+      font-weight: 6400;
       margin-top: 1%;
+    }
+
+    .black-button {
+      width: 100%;
+      background-color: #000;
+      color: #ffffff;
+      padding: 3% 0%;
+      font-weight: 700;
+      border-radius: $radius * 2;
+      transition: width 2s, height 2s, transform 2s;
+      &:hover {
+        color: #000;
+        background-color: #ffffff;
+      }
+    }
+  }
+
+  .purple {
+    p {
+      color: #{$purpleColor};
+    }
+    .black-button {
+      border: 1px solid #{$purpleColor};
+      background-color: #{$purpleColor};
+      &:hover {
+        color: #{$purpleColor};
+        background-color: #ffffff;
+      }
     }
   }
 }
-
 //! Blogs
 .blogs-container {
   background-color: #dfe5f8;
@@ -263,5 +305,96 @@ $descColor: #636060;
   }
   span {
     color: #bebebe;
+  }
+}
+
+//! Cards
+.hover-card-section {
+  // margin-bottom: %
+  height: 100vh;
+  width: 100%;
+  padding: 3% 0;
+  color: #222;
+
+  .hero-container {
+    display: flex;
+    flex-direction: row; /* md:flex-row */
+    justify-content: space-between;
+    align-items: flex-end; /* md:items-end */
+    padding: 1.5rem 3rem; /* md:px-8 */
+    .hero-title {
+      max-width: 37.5rem;
+      font-size: 2.5rem;
+      font-weight: bold;
+      line-height: 1.2;
+      span {
+        color: #6b7280; /* text-slate-400 */
+      }
+    }
+    .learn-more-button {
+      display: inline-block; /* whitespace-nowrap */
+      padding: 0.75rem 1.5rem; /* px-4 py-2 */
+      border-radius: 0.75rem; /* rounded-lg */
+      background-color: #1f2937; /* bg-slate-900 */
+      color: #fff; /* text-white */
+      font-weight: 500; /* font-medium */
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15); /* shadow-xl */
+      transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+      &:hover {
+        background-color: #303f53;
+        transform: scale(1.01);
+      }
+    }
+  }
+
+  .bounce-card {
+    margin: 1%;
+    .card-overlay {
+      height: 80%;
+      padding: 2%;
+      border-radius: $radius * 3;
+      transition: transform 0.2s ease-in-out;
+      span {
+        display: block;
+        text-align: center;
+        font-weight: 600;
+        color: #ffffff;
+      }
+      &:hover {
+        transform: rotate(10deg);
+      }
+    }
+    .card:hover {
+      transform: rotate(10deg);
+    }
+    .one {
+      background: #8f8cf9;
+    }
+    .two {
+      background: #fb9f35;
+    }
+    .three {
+      background: #39d694;
+    }
+    .four {
+      background: #f67298;
+    }
+  }
+
+  .bounce-card-bottom {
+    // position: relative;
+    height: 250px;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: $radius;
+    background-color: #f1f5f9;
+    padding: 1rem;
+  }
+
+  .card-title {
+    text-align: center; /* text-center */
+    font-size: 28px; /* text-3xl */
+    font-weight: 700; /* font-semibold */
+    margin-bottom: 10%;
   }
 }

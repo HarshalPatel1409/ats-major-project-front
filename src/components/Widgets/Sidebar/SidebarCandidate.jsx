@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SidebarCandidate = () => {
+  let navigate = useNavigate();
   const pages = [
     { path: "/candidate/", label: "Dashboard" },
     { path: "/candidate/job", label: "Job" },
@@ -18,14 +19,26 @@ const SidebarCandidate = () => {
     window.location.href = "/login";
   };
 
+  const handleLocation = (path) => {
+    navigate(path);
+  };
+
   return (
     <div className="sidebar">
-      {pages.map((page, index) => (
-        <div key={index}>
-          <Link to={page.path}>{page.label}</Link>
-        </div>
-      ))}
-      <button onClick={handleLogout}>Logout</button>
+      <div className="path-container">
+        {pages.map((page, index) => (
+          <div
+            className="apath"
+            key={index}
+            onClick={() => handleLocation(page.path)}
+          >
+            {page.label}
+          </div>
+        ))}
+      </div>
+      <button className="delete-button" onClick={handleLogout}>
+        Logout
+      </button>
     </div>
   );
 };

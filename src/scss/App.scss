@@ -16,8 +16,7 @@
 
 //! Website Default setting
 :root {
-  max-width: 1280px;
-  margin: 0 auto;
+  max-width: 100vw;
   text-align: center;
 }
 * {
@@ -43,7 +42,10 @@ $radius: 10px;
   border-radius: $radius;
   .top-heading {
     font-size: 36px;
-    font-weight: 600;
+    font-weight: 300;
+    span {
+      font-weight: 700;
+    }
   }
 
   .add-button {
